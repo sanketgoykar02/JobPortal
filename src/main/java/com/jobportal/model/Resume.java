@@ -1,27 +1,37 @@
 package com.jobportal.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Document(collection = "resumes")
 public class Resume {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long resumeId;
-    private String resumeContent;
+	@Id
+	private String resumeId;
+	private String candidateId;
+	private String resumeContent;
 
-    @OneToOne
-    @JoinColumn(name = "candidate_id")
-    private Candidate candidate;
+	public String getResumeId() {
+		return resumeId;
+	}
+
+	public void setResumeId(String resumeId) {
+		this.resumeId = resumeId;
+	}
+
+	public String getCandidateId() {
+		return candidateId;
+	}
+
+	public void setCandidateId(String candidateId) {
+		this.candidateId = candidateId;
+	}
+
+	public String getResumeContent() {
+		return resumeContent;
+	}
+
+	public void setResumeContent(String resumeContent) {
+		this.resumeContent = resumeContent;
+	}
+
 }

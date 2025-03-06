@@ -4,5 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.jobportal.model.Candidate;
 
-public interface CandidateRepository extends JpaRepository<Candidate, Long> {
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+public interface CandidateRepository extends MongoRepository<Candidate, String> {
 }

@@ -1,5 +1,6 @@
 package com.jobportal.controller;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,33 +20,33 @@ import com.jobportal.service.CandidateService;
 @RestController
 @RequestMapping("/candidates")
 public class CandidateController {
-
+	
 	@Autowired
-	private CandidateService service;
+    private CandidateService service;
 
-	@GetMapping
-	public ResponseEntity<List<Candidate>> getAllCandidates() {
-		return ResponseEntity.ok(service.getAllCandidates());
-	}
+    @GetMapping
+    public ResponseEntity<List<Candidate>> getAllCandidates() {
+        return ResponseEntity.ok(service.getAllCandidates());
+    }
 
-	@GetMapping("/{id}")
-	public ResponseEntity<Candidate> getCandidateById(@PathVariable Long id) {
-		return ResponseEntity.ok(service.getCandidateById(id));
-	}
+    @GetMapping("/{id}")
+    public ResponseEntity<Candidate> getCandidateById(@PathVariable String id) {
+        return ResponseEntity.ok(service.getCandidateById(id));
+    }
 
-	@PostMapping
-	public ResponseEntity<Candidate> addCandidate(@RequestBody Candidate candidate) {
-		return ResponseEntity.ok(service.saveCandidate(candidate));
-	}
+    @PostMapping
+    public ResponseEntity<Candidate> addCandidate(@RequestBody Candidate candidate) {
+        return ResponseEntity.ok(service.saveCandidate(candidate));
+    }
 
-	@PutMapping("/{id}")
-	public ResponseEntity<Candidate> updateCandidate(@PathVariable Long id, @RequestBody Candidate candidate) {
-		return ResponseEntity.ok(service.updateCandidate(id, candidate));
-	}
+    @PutMapping("/{id}")
+    public ResponseEntity<Candidate> updateCandidate(@PathVariable String id, @RequestBody Candidate candidate) {
+        return ResponseEntity.ok(service.updateCandidate(id, candidate));
+    }
 
-	@DeleteMapping("/{id}")
-	public ResponseEntity<String> deleteCandidate(@PathVariable Long id) {
-		service.deleteCandidate(id);
-		return ResponseEntity.ok("Candidate deleted successfully");
-	}
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteCandidate(@PathVariable String id) {
+        service.deleteCandidate(id);
+        return ResponseEntity.ok("Candidate deleted successfully");
+    }
 }

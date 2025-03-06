@@ -1,36 +1,60 @@
 package com.jobportal.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import java.util.List;
 
-import org.springframework.boot.autoconfigure.batch.BatchProperties.Job;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Document(collection = "candidates")
 public class Candidate {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
-    private String email;
-    private String phone;
+	@Id
+	private String id;
+	private String name;
+	private String email;
+	private String phone;
 
-    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
-    private Resume resume;
+	@DBRef
+	private List<Jobs> jobs;// one-to-many
 
-    @OneToMany(mappedBy = "candidate", cascade = CascadeType.ALL)
-    private List<Job> jobs;
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public List<Jobs> getJobs() {
+		return jobs;
+	}
+
+	public void setJobs(List<Jobs> jobs) {
+		this.jobs = jobs;
+	}
+
 }
