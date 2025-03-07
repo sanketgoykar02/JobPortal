@@ -17,6 +17,15 @@ public class Candidate {
 	@DBRef
 	private List<Jobs> jobs;// one-to-many
 
+	public Candidate(String id, String name, String email, String phone, List<Jobs> jobs) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.phone = phone;
+		this.jobs = jobs;
+	}
+
 	public String getId() {
 		return id;
 	}

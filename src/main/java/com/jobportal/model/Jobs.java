@@ -20,6 +20,20 @@ public class Jobs {
     @DBRef
     private Company company; // Many-to-One 
 
+    
+    public Jobs(String jobId, String jTitle, String jDescription, String jLocation, Double salary, Candidate candidate,
+			Company company) {
+		super();
+		this.jobId = jobId;
+		this.jTitle = jTitle;
+		this.jDescription = jDescription;
+		this.jLocation = jLocation;
+		this.salary = salary;
+		this.candidate = candidate;
+		this.company = company;
+	}
+
+	
 	public String getJobId() {
 		return jobId;
 	}
